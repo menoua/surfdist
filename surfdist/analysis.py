@@ -1,5 +1,6 @@
 import gdist
 import numpy as np
+import surfdist as sd
 from surfdist.utils import surf_keep_cortex, translate_src, recort
 
 
@@ -20,7 +21,7 @@ def dist_calc(surf, cortex, source_nodes):
     return dist
 
 
-def zone_calc(surf, cortex, src):
+def zone_calc(surf, cortex, source_nodes):
     """
     Calculate closest nodes to each source node using exact geodesic distance along the cortical surface.
     """
