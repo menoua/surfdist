@@ -2,8 +2,7 @@ def viz(coords, faces, stat_map=None,
         elev=0, azim=0, cmap='coolwarm',
         threshold=None, alpha='auto',
         bg_map=None, bg_on_stat=False,
-        figsize=None, ax=None,
-        **kwargs):
+        figsize=None, ax=None):
 
     ''' Visualize results on cortical surface using matplotlib.
 
