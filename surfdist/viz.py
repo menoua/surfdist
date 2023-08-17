@@ -2,7 +2,7 @@ def viz(coords, faces, stat_map=None,
         elev=0, azim=0, cmap='coolwarm',
         threshold=None, alpha='auto',
         bg_map=None, bg_on_stat=False,
-        figsize=None,
+        figsize=None, ax=None,
         **kwargs):
 
     ''' Visualize results on cortical surface using matplotlib.
@@ -67,11 +67,13 @@ def viz(coords, faces, stat_map=None,
         cmap = plt.cm.get_cmap(cmap)
 
     # initiate figure and 3d axes
-    if figsize is not None:
+    if ax is None:
         fig = plt.figure(figsize=figsize)
+        ax = fig.add_subplot(111, projection='3d', xlim=limits, ylim=limits)
     else:
-        fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d', xlim=limits, ylim=limits)
+        fig = None
+        ax.set_xlim(limits)
+        ax.set_ylim(limits)
     ax.view_init(elev=elev, azim=azim)
     ax.set_axis_off()
 
@@ -129,4 +131,5 @@ def viz(coords, faces, stat_map=None,
 
         p3dcollec.set_facecolors(face_colors)
 
-    return fig, ax
+    if fig is not None:
+        return fig, ax
