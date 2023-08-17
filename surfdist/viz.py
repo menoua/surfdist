@@ -52,11 +52,15 @@ def viz(coords, faces, stat_map=None,
     limits = [coords.min(), coords.max()]
 
     # set alpha if in auto mode
-    if alpha == 'auto':
+    if not isinstance(alpha, str):
+        pass
+    elif alpha == 'auto':
         if bg_map is None:
             alpha = .5
         else:
             alpha = 1
+    else:
+        raise ValueError(f"alpha='auto' is the only acceptable string value.")
 
     # if cmap is given as string, translate to matplotlib cmap
     if type(cmap) == str:
